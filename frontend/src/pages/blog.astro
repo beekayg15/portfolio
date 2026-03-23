@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const postModules = import.meta.glob("./blog/*.md", { eager: true });
+const posts = Object.entries(postModules).map(([path, mod]: [string, any]) => ({
+  url: path.replace(/^\./, "").replace(/\.md$/, ""),
+  title: mod.frontmatter.title,
+  date: mod.frontmatter.date ? new Date(mod.frontmatter.date).toISOString().split("T")[0] : null,
+}));
+---
+<Layout title="Blog">
+  <ul class="post-list">
+    {posts.map(post => (
+      <li>
+        <a href={post.url}>{post.title}</a>
+        {post.date && <time>{post.date}</time>}
+      </li>
+    ))}
+  </ul>
+</Layout>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .post-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-list a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .post-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-list time {
+    font-size: 0.8rem;
+    color: #888;
+  }
+</style>
