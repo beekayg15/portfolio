@@ -8,7 +8,7 @@ interface Props {
 }
 
 const frontmatter = Astro.props.frontmatter ?? {};
-const title = frontmatter.title ?? Astro.props.title ?? "Barath GaneshKumar";
+const title = frontmatter.title ?? Astro.props.title ?? "partly_theorist";
 const showSocial = frontmatter.showSocial ?? Astro.props.showSocial ?? false;
 const date = frontmatter.date ? new Date(frontmatter.date).toISOString().split("T")[0] : null;
 ---
@@ -30,7 +30,7 @@ const date = frontmatter.date ? new Date(frontmatter.date).toISOString().split("
   </head>
   <body>
     <header>
-      <h1><a href="/">Barath GaneshKumar</a></h1>
+      <h1><a href="/">partly_theorist</a></h1>
     </header>
 
     {showSocial && (

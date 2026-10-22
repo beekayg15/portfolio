@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Barath GaneshKumar
+title: partly_theorist
 showSocial: true
 ---
 
